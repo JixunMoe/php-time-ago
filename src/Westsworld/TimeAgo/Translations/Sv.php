@@ -7,7 +7,7 @@ use \Westsworld\TimeAgo\Language;
 /**
  * Swedish translations
  */
-class Sv_SE extends Language
+class Sv extends Language
 {
     public function __construct()
     {

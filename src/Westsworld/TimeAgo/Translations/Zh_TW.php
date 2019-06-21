@@ -7,22 +7,22 @@ use \Westsworld\TimeAgo\Language;
 /**
  * Translations
  */
-class Zh_Tw extends Language
+class Zh_TW extends Language
 {
     public function __construct()
     {
         $this->setTranslations([
-            'aboutOneDay' => "1天前",
-            'aboutOneHour' => "大約1小時前",
-            'aboutOneMonth' => "大約1個月前",
-            'aboutOneYear' => "大約1年前",
-            'days' => "%s天前",
-            'hours' => "%s小時前",
-            'lessThanAMinute' => "1分鐘內",
-            'lessThanOneHour' => "%s分鐘前",
-            'months' => "%s個月前",
-            'oneMinute' => "1分鐘前",
-            'years' => "超過%s年前"
+            'aboutOneDay' => "一天前",
+            'aboutOneHour' => "一小時前",
+            'aboutOneMonth' => "一個月前",
+            'aboutOneYear' => "一年前",
+            'days' => "%s 天前",
+            'hours' => "%s 小時前",
+            'lessThanAMinute' => "就在剛才",
+            'lessThanOneHour' => "%s 分鐘前",
+            'months' => "%s 個月前",
+            'oneMinute' => "一分鐘前",
+            'years' => "%s 年前",
         ]);
     }
 }

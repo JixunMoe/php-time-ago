@@ -7,7 +7,7 @@ use \Westsworld\TimeAgo\Language;
 /**
  * Brazilian Portuguese translations
  */
-class Pt_BR extends Language
+class Pt extends Language
 {
     public function __construct()
     {

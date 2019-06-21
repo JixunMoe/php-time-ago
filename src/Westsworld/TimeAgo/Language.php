@@ -4,6 +4,7 @@ namespace Westsworld\TimeAgo;
 
 use \DateTime;
 use \DateInterval;
+use Westsworld\TimeAgo\Translations\TranslationLoader;
 
 abstract class Language
 {
@@ -17,6 +18,10 @@ abstract class Language
     public function getTranslations(): array
     {
         return $this->translations;
+    }
+
+    public static function fromLanguageCode(string $code): Language {
+        return TranslationLoader::loadLanguage($code);
     }
 
     /**
@@ -354,7 +359,7 @@ abstract class Language
     /**
      * Checks if the time difference is more than 2 years
      *
-     * @param inDateIntervalt $timeDifference the time difference from DateTime
+     * @param DateInterval $timeDifference the time difference from DateTime
      * @return bool
      */
     private function isMoreThan2Years(DateInterval $timeDifference)

@@ -7,7 +7,7 @@ use \Westsworld\TimeAgo\Language;
 /**
  * Iranian translations
  */
-class Fa_IR extends Language
+class Fa extends Language
 {
     public function __construct()
     {

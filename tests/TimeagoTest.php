@@ -33,15 +33,15 @@ class TimeagoTest extends TestCase
         $timeAgo = new TimeAgo();
 
         // testing "less than a minute"
-        $this->assertEquals('less than a minute ago', $timeAgo->inWordsFromStrings("now"));
-        $this->assertEquals('less than a minute ago', $timeAgo->inWordsFromStrings("-1 second"));
-        $this->assertEquals('less than a minute ago', $timeAgo->inWordsFromStrings("-29 second"));
-        $this->assertNotEquals('less than a minute ago', $timeAgo->inWordsFromStrings("-30 second"));
+        $this->assertEquals('just now', $timeAgo->inWordsFromStrings("now"));
+        $this->assertEquals('just now', $timeAgo->inWordsFromStrings("-1 second"));
+        $this->assertEquals('just now', $timeAgo->inWordsFromStrings("-29 second"));
+        $this->assertNotEquals('just now', $timeAgo->inWordsFromStrings("-30 second"));
         // testing "1 minute"
-        $this->assertEquals('1 minute ago', $timeAgo->inWordsFromStrings("-30 second"));
-        $this->assertEquals('1 minute ago', $timeAgo->inWordsFromStrings("-60 second"));
-        $this->assertEquals('1 minute ago', $timeAgo->inWordsFromStrings("-89 second"));
-        $this->assertNotEquals('1 minute ago', $timeAgo->inWordsFromStrings("-90 second"));
+        $this->assertEquals('a minute ago', $timeAgo->inWordsFromStrings("-30 second"));
+        $this->assertEquals('a minute ago', $timeAgo->inWordsFromStrings("-60 second"));
+        $this->assertEquals('a minute ago', $timeAgo->inWordsFromStrings("-89 second"));
+        $this->assertNotEquals('a minute ago', $timeAgo->inWordsFromStrings("-90 second"));
         
 
         // testing 2..44 minutes
@@ -52,9 +52,9 @@ class TimeagoTest extends TestCase
         $this->assertNotContains('minutes ago', $timeAgo->inWordsFromStrings("-44 minute -30 second"));
 
         // testing about 1 hour
-        $this->assertEquals('about 1 hour ago', $timeAgo->inWordsFromStrings("-44 minute -30 second"));
-        $this->assertEquals('about 1 hour ago', $timeAgo->inWordsFromStrings("-89 minute -29 second"));
-        $this->assertNotEquals('about 1 hour ago', $timeAgo->inWordsFromStrings("-90 minute"));
+        $this->assertEquals('about an hour ago', $timeAgo->inWordsFromStrings("-44 minute -30 second"));
+        $this->assertEquals('about an hour ago', $timeAgo->inWordsFromStrings("-89 minute -29 second"));
+        $this->assertNotEquals('about an hour ago', $timeAgo->inWordsFromStrings("-90 minute"));
 
         // testing about 2..24 hours
         $this->assertEquals('2 hours ago', $timeAgo->inWordsFromStrings("-90 minute"));
@@ -64,9 +64,9 @@ class TimeagoTest extends TestCase
         $this->assertNotContains('hours ago', $timeAgo->inWordsFromStrings("-24 hour"));
 
         // testing 1 day
-        $this->assertEquals('1 day ago', $timeAgo->inWordsFromStrings("-23 hour -59 minute -30 second"));
-        $this->assertEquals('1 day ago', $timeAgo->inWordsFromStrings("-47 hour -59 minute -29 second"));
-        $this->assertNotEquals('1 day ago', $timeAgo->inWordsFromStrings("-47 hour -59 minute -30 second"));
+        $this->assertEquals('one day ago', $timeAgo->inWordsFromStrings("-23 hour -59 minute -30 second"));
+        $this->assertEquals('one day ago', $timeAgo->inWordsFromStrings("-47 hour -59 minute -29 second"));
+        $this->assertNotEquals('one day ago', $timeAgo->inWordsFromStrings("-47 hour -59 minute -30 second"));
 
         // testing 2..24 days
         $this->assertContains('days ago', $timeAgo->inWordsFromStrings("-47 hour -59 minute -30 second"));
@@ -74,9 +74,9 @@ class TimeagoTest extends TestCase
         $this->assertNotContains('days ago', $timeAgo->inWordsFromStrings("-29 day -23 hour -59 minute -30 second"));
 
         // testing 1 month
-        $this->assertEquals('about 1 month ago', $timeAgo->inWordsFromStrings("-29 day -23 hour -59 minute -30 second"));
-        $this->assertEquals('about 1 month ago', $timeAgo->inWordsFromStrings("-59 day -23 hour -59 minute -29 second"));
-        $this->assertNotEquals('about 1 month ago', $timeAgo->inWordsFromStrings("-59 day -23 hour -59 minute -30 second"));
+        $this->assertEquals('about one month ago', $timeAgo->inWordsFromStrings("-29 day -23 hour -59 minute -30 second"));
+        $this->assertEquals('about one month ago', $timeAgo->inWordsFromStrings("-59 day -23 hour -59 minute -29 second"));
+        $this->assertNotEquals('about one month ago', $timeAgo->inWordsFromStrings("-59 day -23 hour -59 minute -30 second"));
 
         // testing 2..12 months
         $this->assertContains('months ago', $timeAgo->inWordsFromStrings("-59 day -23 hour -59 minute -30 second"));
@@ -89,10 +89,10 @@ class TimeagoTest extends TestCase
         $this->assertNotContains('months ago', $timeAgo->inWordsFromStrings(date('c', $oneYearAgo)));
 
         // testing 1 year
-        $this->assertContains('1 year ago', $timeAgo->inWordsFromStrings(date('c', $oneYearAgo - $twoDays)));
+        $this->assertContains('one year ago', $timeAgo->inWordsFromStrings(date('c', $oneYearAgo - $twoDays)));
         $twoYearsAgo = strtotime("-2 year");
-        $this->assertContains('1 year ago', $timeAgo->inWordsFromStrings(date('c', $twoYearsAgo + $twoDays)));
-        $this->assertNotContains('1 year ago', $timeAgo->inWordsFromStrings(date('c', $twoYearsAgo)));
+        $this->assertContains('one year ago', $timeAgo->inWordsFromStrings(date('c', $twoYearsAgo + $twoDays)));
+        $this->assertNotContains('one year ago', $timeAgo->inWordsFromStrings(date('c', $twoYearsAgo)));
 
         // testing 2 years or more
         $this->assertEquals('over 2 years ago', $timeAgo->inWordsFromStrings("-2 year"));
@@ -113,23 +113,23 @@ class TimeagoTest extends TestCase
         $timeAgo = new TimeAgo(new \Westsworld\TimeAgo\Translations\En());
         
         // testing "less than a minute"
-        $this->assertEquals('less than a minute ago', $timeAgo->inWords(new DateTime()));
-        $this->assertEquals('less than a minute ago', $timeAgo->inWords((new DateTime())->sub(new DateInterval('PT1S'))));
-        $this->assertEquals('less than a minute ago', $timeAgo->inWords((new DateTime())->sub(new DateInterval('PT29S'))));
-        $this->assertNotEquals('less than a minute ago', $timeAgo->inWords((new DateTime())->sub(new DateInterval('PT30S'))));
+        $this->assertEquals('just now', $timeAgo->inWords(new DateTime()));
+        $this->assertEquals('just now', $timeAgo->inWords((new DateTime())->sub(new DateInterval('PT1S'))));
+        $this->assertEquals('just now', $timeAgo->inWords((new DateTime())->sub(new DateInterval('PT29S'))));
+        $this->assertNotEquals('just now', $timeAgo->inWords((new DateTime())->sub(new DateInterval('PT30S'))));
 
         // testing "1 minute"
-        $this->assertEquals('1 minute ago', $timeAgo->inWords((new DateTime())->sub(new DateInterval('PT30S'))));
-        $this->assertEquals('1 minute ago', $timeAgo->inWords((new DateTime())->sub(new DateInterval('PT60S'))));
-        $this->assertEquals('1 minute ago', $timeAgo->inWords((new DateTime())->sub(new DateInterval('PT89S'))));
-        $this->assertNotEquals('1 minute ago', $timeAgo->inWords((new DateTime())->sub(new DateInterval('PT90S'))));
+        $this->assertEquals('a minute ago', $timeAgo->inWords((new DateTime())->sub(new DateInterval('PT30S'))));
+        $this->assertEquals('a minute ago', $timeAgo->inWords((new DateTime())->sub(new DateInterval('PT60S'))));
+        $this->assertEquals('a minute ago', $timeAgo->inWords((new DateTime())->sub(new DateInterval('PT89S'))));
+        $this->assertNotEquals('a minute ago', $timeAgo->inWords((new DateTime())->sub(new DateInterval('PT90S'))));
     }
 
     public function testLanguage()
     {
         // using default (english)
         $timeAgo = new TimeAgo();
-        $this->assertEquals('less than a minute ago', $timeAgo->inWords(new DateTime()));
+        $this->assertEquals('just now', $timeAgo->inWords(new DateTime()));
 
         // switching to danish
         $timeAgo = new TimeAgo(new \Westsworld\TimeAgo\Translations\Da());

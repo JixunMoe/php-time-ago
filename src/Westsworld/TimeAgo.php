@@ -85,9 +85,9 @@ class TimeAgo
      *
      * @param string $past
      * @param string $now
-     * @return void
+     * @return string
      */
-    public function inWordsFromStrings(string $past, string $now = 'now')
+    public function inWordsFromStrings(\string $past, \string $now = 'now'): string
     {
         return $this->getLanguage()->inWords(new DateTime($past), new DateTime($now));
     }
