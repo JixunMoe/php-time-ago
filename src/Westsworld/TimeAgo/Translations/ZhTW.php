@@ -7,7 +7,7 @@ use \Westsworld\TimeAgo\Language;
 /**
  * Translations
  */
-class Zh_TW extends Language
+class ZhTW extends Language
 {
     public function __construct()
     {

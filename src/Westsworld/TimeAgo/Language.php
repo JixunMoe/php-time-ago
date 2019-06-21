@@ -49,11 +49,11 @@ abstract class Language
      * Fetches the different between $past and $now in a spoken format.
      * NOTE: both past and now should be instances of DateTime
      *
-     * @param DateTime $past the past date to use
-     * @param DateTime $now the current timezone, defaults to now.
+     * @param \DateTimeInterface $past the past date to use
+     * @param \DateTimeInterface $now the current timezone, defaults to now.
      * @return string the difference in spoken format, e.g. 1 day ago
      */
-    public function inWords(DateTime $past, DateTime $now)
+    public function inWords(\DateTimeInterface $past, \DateTimeInterface $now)
     {
         // finds the time difference as a string
         return $this->getTimeDifference($past->diff($now));

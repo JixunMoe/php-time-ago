@@ -7,7 +7,7 @@ use \Westsworld\TimeAgo\Language;
 /**
  * Chinese translations
  */
-class Zh_CN extends Language
+class ZhCN extends Language
 {
     public function __construct()
     {
@@ -22,7 +22,7 @@ class Zh_CN extends Language
             'lessThanOneHour' => "%s 分钟前",
             'months' => "%s 个月前",
             'oneMinute' => "一分钟前",
-            'years' => "%s 年之前"
+            'years' => "%s 年前"
         ]);
     }
 }

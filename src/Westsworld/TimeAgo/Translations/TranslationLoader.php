@@ -3,6 +3,7 @@
 namespace Westsworld\TimeAgo\Translations;
 
 use \Westsworld\TimeAgo\Language;
+use \Westsworld\TimeAgo\Translations\Zh_CN;
 
 class TranslationLoader {
     private static $dicts = null;
@@ -17,10 +18,11 @@ class TranslationLoader {
         $country = substr($lower, 0, 2);
         $dict = null;
         if ($country === 'zh') {
-            if ($lower === 'zh_cn') {
-                $dict = Zh_CN::class;
-            } else if ($lower === 'zh_tw') {
-                $dict = Zh_TW::class;
+            $dialouge = substr($lower, 3);
+            if ($dialouge === 'tw') {
+                $dict = ZhTW::class;
+            } else {
+                $dict = ZhCN::class;
             }
         } else {
             if (array_key_exists($country, self::$dicts)) {
